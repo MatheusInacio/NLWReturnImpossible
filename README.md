@@ -13,6 +13,7 @@ npm run dev
 https://tailwindcss.com/
 https://phosphoricons.com/
 https://headlessui.dev/
+html2canvas
 
 #Libs Server
 Express
