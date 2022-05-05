@@ -1,11 +1,20 @@
 # NLWReturnImpossible
 NLW Return – Mission Impulse
 
-#RUN
+#RUN WEB
 cd web
 npm run dev
 
-#Libs
+#RUN SERVER
+cd server
+npm run dev
+
+#Libs Web
 https://tailwindcss.com/
 https://phosphoricons.com/
 https://headlessui.dev/
+
+#Libs Server
+Express
+ts-node-dev
+
