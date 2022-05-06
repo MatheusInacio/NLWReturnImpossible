@@ -18,4 +18,9 @@ html2canvas
 #Libs Server
 Express
 ts-node-dev
+prisma.io orm
 
+
+#prisma
+create/update - npx prisma migrate dev
+Studio - npx prisma studio
