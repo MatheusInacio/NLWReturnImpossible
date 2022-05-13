@@ -23,7 +23,7 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
     const [screenshot, setScreenshot] = useState<string | null>(null);
     const [comment, setComment] = useState('');
 
-    const feedbacktTypeInfo = feedbackTypes[feedbackType];
+    const feedbackTypeInfo = feedbackTypes[feedbackType];
 
     function handleScreenshot() {
         captureScreen({
@@ -40,6 +40,8 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
 
     async function handleSendFeedback() {
 
+        console.log('dddddddddddddddddddddddddddd')
+
         if (isSendingFeedback) {
             return;
         }
@@ -49,7 +51,7 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
         const screenshotBase64 = screenshot && await FileSystem.readAsStringAsync(screenshot, { encoding: 'base64' });
 
         try {
-            api.post('/feedbacks', {
+           await api.post('/feedbacks', {
                 type: feedbackType,
                 screenshot: `data:image/png;base64, ${screenshotBase64}`,
                 comment
@@ -74,10 +76,10 @@ export function Form({ feedbackType, onFeedbackCanceled, onFeedbackSent }: Props
 
                 <View style={styles.titleContainer}>
                     <Image
-                        source={feedbacktTypeInfo.image}
+                        source={feedbackTypeInfo.image}
                         style={styles.image} />
                     <Text style={styles.titleText}>
-                        {feedbacktTypeInfo.title}
+                        {feedbackTypeInfo.title}
                     </Text>
                 </View>
             </View>
