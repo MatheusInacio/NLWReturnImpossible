@@ -16,16 +16,16 @@ export class SubmitFeedbackUseCase {
   async execute(request: SubmitFeedbackUseCaseRequest) {
     const { type, comment, screenshot } = request;
 
-    if (!type ) {
-        throw new Error('Type Required');
+    if (!type) {
+      throw new Error("Type Required");
     }
 
-    if (!comment ) {
-        throw new Error('Comment Required');
+    if (!comment) {
+      throw new Error("Comment Required");
     }
 
-    if (screenshot && !screenshot.startsWith('data:image/png;base64')) {
-        throw new Error('Invalid Image');
+    if (screenshot && !screenshot.startsWith("data:image/png;base64")) {
+      throw new Error("Invalid Image");
     }
 
     await this.feedbacksRepository.create({
@@ -40,6 +40,7 @@ export class SubmitFeedbackUseCase {
         `<div style="font-family: sans-serif; font-size: 16px;">`,
         `<p>Tipo do Feedback: ${type}</p>`,
         `<p>Comentários: ${comment}</p>`,
+        screenshot ? `<img src="${screenshot}" />` : ``,
         `</div>`,
       ].join("\n"),
     });
